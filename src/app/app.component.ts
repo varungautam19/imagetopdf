@@ -15,7 +15,9 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
-    this.initializeApp();
+    if (this.platform.is('capacitor')) {
+      this.initializeApp();
+    }
   }
 
   initializeApp() {

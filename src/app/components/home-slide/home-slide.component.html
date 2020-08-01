@@ -1,0 +1,37 @@
+<div class="ion-margin mgt-10 bdra-5 shadow-1 bg-white">
+  <ion-grid class="top_row">
+    <ion-row class="ion-padding-bottom">
+      <ion-col class="ion-padding-horizontal">
+        <ion-text class="text-color">
+          <h2 class="fs-12">Photos</h2>
+        </ion-text>
+        <div class="upload" (click)="uploadImages()">
+          <ion-icon class="ion-padding ion-float-left" name="camera" color="medium" size="large"></ion-icon>
+          <ion-fab class="ion-fab" vertical="center" horizontal="center" slot="fixed">
+            <ion-fab-button color="medium">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </div>
+        <input #fileInput type="file" hidden accept="image/*" multiple (change)="onImageSelected()" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+
+<ion-row *ngIf="selectedImages.length > 0">
+  <ion-col class="ion-text-center">
+    <div *ngFor="let image of imageList;let i = index" class="container">
+      <img src="{{image.url}}" width="80px" height="80px">
+      <ion-fab (click)="removeImage(image.id)" class="removeImage">
+        <ion-fab-button size="small" vertical="center" horizontal="center" color="medium">
+          <ion-icon size="small" name="remove"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+  </ion-col>
+</ion-row>
+
+<div class="ion-text-center" *ngIf="selectedImages.length > 0">
+  <ion-button (click)="createPDF()">Generate PDF</ion-button>
+</div>
