@@ -1,0 +1,7 @@
+{
+  "name": "imagetopdf",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
